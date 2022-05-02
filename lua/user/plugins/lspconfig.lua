@@ -54,7 +54,16 @@ local on_attach = function(client, bufnr)
   -- formatting
   nbkeymap(bufnr, '<leader>f', ':LspFormatting<CR>')
 
-  if client.resolved_capabilities.document_formatting then
+  -- format on save
+  -- tsserver uses eslint lsp for formatting
+  if client.name ~= 'tsserver' then
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      pattern = '*',
+      callback = function()
+        vim.cmd(':EslintFixAll')
+      end
+    })
+  elseif client.resolved_capabilities.document_formatting then
     vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
   end
 end
