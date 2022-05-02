@@ -157,7 +157,7 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 
 keymap('<leader><space>', '<cmd>NvimTreeToggle<CR>')
 keymap('<leader>r', '<cmd>NvimTreeRefresh<CR>')
-keymap('<leader>f', '<cmd>NvimTreeFindFileToggle<CR>')
+keymap('<leader>s', '<cmd>NvimTreeFindFileToggle<CR>')
 
 -- this variable must be enabled for colors to be applied properly
 vim.g.termguicolors = true

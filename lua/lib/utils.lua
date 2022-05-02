@@ -27,6 +27,10 @@ M.nbkeymap = function(bufnr, key, map)
   M.buf_keymap(bufnr, 'n', key, map, { noremap = true })
 end
 
+M.ibkeymap = function(bufnr, key, map)
+  M.buf_keymap(bufnr, 'i', key, map, { noremap = true })
+end
+
 M.tablecopy = function(orig)
   local orig_type = type(orig)
   local copy

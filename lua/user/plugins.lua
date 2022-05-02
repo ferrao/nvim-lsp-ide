@@ -11,15 +11,26 @@ packer.startup(function(use)
     use { 'tpope/vim-surround' } -- Word surroundings
     use { 'tpope/vim-commentary' } -- Comment stuff out
     use { 'tpope/vim-sleuth' } -- Indent autodetection with editorconfig support
-    -- use 'nvim-lua/popup.nvim' -- An implementation of the Popup API from vim in Neovim
-    -- use 'nvim-lua/plenary.nvim' -- Useful lua functions used by lots of plugins
-    --
-    -- Install any LSP with :LspInstall
+    use { 'nvim-lua/plenary.nvim' } -- Useful lua functions used by lots of plugins
+    use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
+
+    -- LSP
     use {
+        -- nvim-lsp-installer setup needs to be colocated with
+        -- nvim-lspconfig to ensure proper plugin setup order
         'williamboman/nvim-lsp-installer',
-        config = function()
-            require("nvim-lsp-installer").setup {}
-        end
+        {
+            'neovim/nvim-lspconfig',
+            requires = {
+                'b0o/schemastore.nvim',
+                'folke/lsp-colors.nvim',
+                'weilbith/nvim-code-action-menu',
+            },
+            config = function()
+                require('nvim-lsp-installer').setup {}
+                require('user.plugins.lspconfig')
+            end
+        }
     }
 
     use {
@@ -34,19 +45,6 @@ packer.startup(function(use)
         config = function()
             require('user.plugins.treesitter')
             require('spellsitter').setup()
-        end
-    }
-
-    -- LSP
-    use {
-        'neovim/nvim-lspconfig',
-        requires = {
-            'b0o/schemastore.nvim',
-            'folke/lsp-colors.nvim',
-            'weilbith/nvim-code-action-menu',
-        },
-        config = function()
-            require('user.plugins.lspconfig')
         end
     }
 
