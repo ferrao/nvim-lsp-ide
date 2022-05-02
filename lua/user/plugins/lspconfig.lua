@@ -52,19 +52,21 @@ local on_attach = function(client, bufnr)
   nbkeymap(bufnr, '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
 
   -- formatting
-  nbkeymap(bufnr, '<leader>f', ':LspFormatting<CR>')
 
   -- format on save
   -- tsserver uses eslint lsp for formatting
-  if client.name ~= 'tsserver' then
+  if client.name == 'eslint' then
+    nbkeymap(bufnr, '<leader>f', ':EslintFixAll<CR>')
+
     vim.api.nvim_create_autocmd('BufWritePre', {
       pattern = '*',
       callback = function()
         vim.cmd(':EslintFixAll')
       end
     })
-  elseif client.resolved_capabilities.document_formatting then
+  elseif client.resolved_capabilities.document_formatting and client.name ~= 'tsserver' then
     vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+    nbkeymap(bufnr, '<leader>f', ':LspFormatting<CR>')
   end
 end
 
@@ -85,6 +87,16 @@ lspconfig.sumneko_lua.setup {
         library = vim.api.nvim_get_runtime_file('', true),
       }
     }
+  },
+}
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  init_options = {
+    preferences = {
+      -- is it possible to disable a specific suggestion only?
+      disableSuggestions = true
+    }
   }
 }
 
@@ -92,10 +104,11 @@ lspconfig.sumneko_lua.setup {
 -- Remove from servers the ones we have explecitely configured
 local servers = tablecopy(allServers)
 tableremove(servers, 'sumneko_lua') -- configured above
+tableremove(servers, 'tsserver') -- configured above
 
 -- Use a loop to conveniently call 'setup' on all the remaining servers
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = on_attach
+    on_attach = on_attach,
   }
 end
