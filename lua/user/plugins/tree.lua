@@ -108,7 +108,7 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     },
   },
   filters = {
-    dotfiles = false,
+    dotfiles = true,
     custom = {},
     exclude = {},
   },

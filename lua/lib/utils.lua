@@ -23,6 +23,10 @@ M.nkeymap = function(key, map)
   M.keymap('n', key, map, { noremap = true })
 end
 
+M.vnkeymap = function(key, map)
+  M.keymap('v', key, map, { noremap = true })
+end
+
 M.nbkeymap = function(bufnr, key, map)
   M.buf_keymap(bufnr, 'n', key, map, { noremap = true })
 end
