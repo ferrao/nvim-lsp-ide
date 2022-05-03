@@ -2,11 +2,10 @@ local utils = require('telescope.utils')
 local fortune = utils.get_os_command_output({ 'fortune' }, vim.loop.cwd())
 
 vim.g.dashboard_preview_command = 'cat'
-vim.g.dashboard_preview_pipeline = 'lolcat'
+-- vim.g.dashboard_preview_pipeline = 'lolcat'
 vim.g.dashboard_preview_file = '~/.config/nvim/sunjon.cat'
 vim.g.dashboard_preview_file_height = 10
 vim.g.dashboard_preview_file_width = 70
--- highlight dashboardHeader guibg='#FFFFFF'
 
 -- vim.g.dashboard_custom_header = {
 --   ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
