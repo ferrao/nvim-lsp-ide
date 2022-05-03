@@ -127,7 +127,7 @@ packer.startup(function(use)
         'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
-            require('gitsigns').setup { sign_priority = 20 }
+            require('user.plugins.gitsigns')
         end,
     }
 
@@ -144,4 +144,5 @@ packer.startup(function(use)
             require('user.plugins.dashboard')
         end
     }
+
 end)
