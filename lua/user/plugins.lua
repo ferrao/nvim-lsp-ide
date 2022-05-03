@@ -25,10 +25,12 @@ packer.startup(function(use)
                 'b0o/schemastore.nvim',
                 'folke/lsp-colors.nvim',
                 'weilbith/nvim-code-action-menu',
+                'folke/trouble.nvim'
             },
             config = function()
                 require('nvim-lsp-installer').setup {}
                 require('user.plugins.lspconfig')
+                require('user.plugins.trouble')
             end
         }
     }
@@ -142,14 +144,6 @@ packer.startup(function(use)
         'glepnir/dashboard-nvim',
         config = function()
             require('user.plugins.dashboard')
-        end
-    }
-
-    use {
-        "folke/trouble.nvim",
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('user.plugins.trouble')
         end
     }
 
