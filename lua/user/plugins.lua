@@ -86,6 +86,14 @@ packer.startup(function(use)
     }
 
     use {
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require('user.plugins.bufferline')
+        end
+    }
+
+    use {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = function()
@@ -93,4 +101,47 @@ packer.startup(function(use)
         end
     }
 
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            { 'nvim-lua/plenary.nvim' },
+            { 'kyazdani42/nvim-web-devicons' },
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            { 'gbrlsnchs/telescope-lsp-handlers' },
+            { 'nvim-telescope/telescope-media-files.nvim' }
+
+        },
+        config = function()
+            require('user.plugins.telescope')
+        end
+    }
+
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup()
+        end
+    }
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('gitsigns').setup { sign_priority = 20 }
+        end,
+    }
+
+    use {
+        'j-hui/fidget.nvim',
+        config = function()
+            require('fidget').setup {}
+        end,
+    }
+
+    use {
+        'glepnir/dashboard-nvim',
+        config = function()
+            require('user.plugins.dashboard')
+        end
+    }
 end)

@@ -20,7 +20,7 @@ M.buf_keymap = function(bufnr, mode, lhs, rhs, opts)
 end
 
 M.nkeymap = function(key, map)
-  M.keymap('n', key, map, { noremap = true })
+  M.keymap('n', key, map, { noremap = true, silent = true })
 end
 
 M.vnkeymap = function(key, map)

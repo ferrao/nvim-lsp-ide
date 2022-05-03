@@ -39,6 +39,7 @@ vim.o.cursorline = true
 vim.o.cursorcolumn = true
 vim.o.ruler = true
 vim.o.backspace = 'indent,eol,start'
+vim.g.dashboard_session_directory = vim.fn.stdpath 'data' .. '/sessions//'
 
 -- set var in window
 vim.wo.colorcolumn = '80'

@@ -6,5 +6,6 @@ vim.g.nord_italic = true
 -- Load the colorscheme
 require('nord').set()
 
-vim.cmd[[colorscheme nord]]
+vim.cmd [[colorscheme nord]]
 
+-- autocmd ColorScheme * highlight Normal ctermbg=None
