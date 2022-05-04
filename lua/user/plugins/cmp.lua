@@ -15,7 +15,7 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
 
-    mapping = cmp.mapping.preset.insert({
+  mapping = cmp.mapping.preset.insert({
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -50,6 +50,8 @@ cmp.setup({
     { name = 'nvim_lsp' }
   }, {
     { name = 'buffer' },
+  }, {
+    { name = 'path' },
   })
 })
 
