@@ -13,6 +13,7 @@ packer.startup(function(use)
     use { 'tpope/vim-sleuth' } -- Indent autodetection with editorconfig support
     use { 'nvim-lua/plenary.nvim' } -- Useful lua functions used by lots of plugins
     use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
+    use { 'kkoomen/vim-doge' } -- code documentation plugin, run :call doge#install() to install
 
     -- LSP
     use {
