@@ -87,7 +87,7 @@ lspconfig.sumneko_lua.setup {
         library = vim.api.nvim_get_runtime_file('', true),
       }
     }
-  },
+  }
 }
 
 lspconfig.tsserver.setup {

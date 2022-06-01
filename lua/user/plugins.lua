@@ -9,7 +9,7 @@ packer.startup(function(use)
     use { 'farmergreg/vim-lastplace' } -- Reopen files at last edit position
     use { 'tpope/vim-repeat' } -- Repeat plugin maps with '.'
     use { 'tpope/vim-surround' } -- Word surroundings
-    use { 'tpope/vim-commentary' } -- Comment stuff out
+    use { 'tomtom/tcomment_vim' } -- Comment stuff out
     use { 'tpope/vim-sleuth' } -- Indent autodetection with editorconfig support
     use { 'nvim-lua/plenary.nvim' } -- Useful lua functions used by lots of plugins
     use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
@@ -155,7 +155,6 @@ packer.startup(function(use)
         end
     }
 
-    -- Lua
     use {
         'folke/todo-comments.nvim',
         requires = 'nvim-lua/plenary.nvim',
