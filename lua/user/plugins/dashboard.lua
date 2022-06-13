@@ -1,27 +1,20 @@
-local utils = require('telescope.utils')
-local fortune = utils.get_os_command_output({ 'fortune' }, vim.loop.cwd())
+local utils = require('lib.utils')
+local ts_utils = require('telescope.utils')
+local fortune = ts_utils.get_os_command_output({ 'fortune' }, vim.loop.cwd())
+local db = require('dashboard')
 
-vim.g.dashboard_preview_command = 'cat'
--- vim.g.dashboard_preview_pipeline = 'lolcat'
-vim.g.dashboard_preview_file = '~/.config/nvim/sunjon.cat'
-vim.g.dashboard_preview_file_height = 10
-vim.g.dashboard_preview_file_width = 70
+db.preview_command = 'cat'
+db.preview_file_path = '~/.config/nvim/sunjon.cat'
+db.preview_file_height = 10
+db.preview_file_width = 70
 
--- vim.g.dashboard_custom_header = {
---   ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
---   ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
---   ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
---   ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
---   ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
---   ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
--- }
-
-vim.g.dashboard_custom_section = {
-  a = { description = { '  New file                             ' }, command = 'enew' },
-  b = { description = { '  Reload Last Session       <Leader> sl' }, command = 'SessionLoad' },
-  c = { description = { '  Find file                 <Leader> ff' }, command = 'Telescope find_files' },
-  d = { description = { '  Recent files              <Leader> fo' }, command = 'Telescope oldfiles' },
-  e = { description = { '  Find Word                 <Leader> fg' }, command = 'Telescope live_grep' },
+db.custom_center = {
+  { icon = ' ', desc = 'New File                    ', shortcut = '           ', action = 'enew' },
+  { icon = ' ', desc = 'Reload Last Session         ', shortcut = '<Leader> sl', action = 'SessionLoad' },
+  { icon = ' ', desc = 'Find File                   ', shortcut = '<Leader> ff', action = 'Telescope find_files' },
+  { icon = ' ', desc = 'Recent Files                ', shortcut = '<Leader> sa', action = 'Telescope oldfiles' },
+  { icon = ' ', desc = 'Find Word                   ', shortcut = '<Leader> fg', action = 'Telescope live_grep' },
+  { icon = ' ', desc = 'Neovim Configuration        ', shortcut = '           ', action = 'e ~/.config/nvim.lua/lua/user/plugins.lua' },
 }
-
-vim.g.dashboard_custom_footer = fortune
+local spacing = { '', '' }
+db.custom_footer = utils.table_concat(spacing, fortune)

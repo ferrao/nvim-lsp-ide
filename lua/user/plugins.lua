@@ -15,6 +15,13 @@ packer.startup(function(use)
     use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
     use { 'kkoomen/vim-doge' } -- code documentation plugin, run :call doge#install() to install
 
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
+        end
+    }
+
     -- LSP
     use {
         -- nvim-lsp-installer setup needs to be colocated with
