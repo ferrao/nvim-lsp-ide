@@ -14,6 +14,7 @@ packer.startup(function(use)
     use { 'nvim-lua/plenary.nvim' } -- Useful lua functions used by lots of plugins
     use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
     use { 'kkoomen/vim-doge' } -- code documentation plugin, run :call doge#install() to install
+    use { "ellisonleao/glow.nvim", branch = 'main' } -- markdown viewer
 
     use {
         "folke/which-key.nvim",
