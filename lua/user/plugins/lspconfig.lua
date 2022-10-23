@@ -65,7 +65,7 @@ local on_attach = function(client, bufnr)
       end
     })
   elseif client.server_capabilities.documentFormattingProvider then
-    vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+    vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = false })')
     nbkeymap(bufnr, '<leader>p', ':LspFormatting<CR>')
   end
 end
