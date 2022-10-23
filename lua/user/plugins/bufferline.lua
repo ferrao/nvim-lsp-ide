@@ -2,7 +2,9 @@ vim.cmd [[highlight BufferlineOffset guifg = '#81A1C1' guibg = '#2E3440']]
 
 require('bufferline').setup {
   options = {
-    indicator_icon = ' ',
+    indicator = {
+      icon = ' '
+    },
     offsets = {
       {
         filetype = 'NvimTree',
@@ -24,25 +26,25 @@ require('bufferline').setup {
   },
   highlights = {
     background = {
-      guibg = { attribute = 'bg', highlight = 'TabLineFill' },
+      background = { attribute = 'bg', highlight = 'TabLineFill' },
     },
     fill = {
-      guibg = { attribute = 'bg', highlight = 'TabLineFill' },
+      background = { attribute = 'bg', highlight = 'TabLineFill' },
     },
     tab = {
-      guibg = { attribute = 'bg', highlight = 'TabLineFill' },
+      background = { attribute = 'bg', highlight = 'TabLineFill' },
     },
     close_button = {
-      guibg = { attribute = 'bg', highlight = 'TabLineFill' },
+      background = { attribute = 'bg', highlight = 'TabLineFill' },
     },
     separator = {
-      guibg = { attribute = 'bg', highlight = 'TabLineFill' },
+      background = { attribute = 'bg', highlight = 'TabLineFill' },
     },
     modified = {
-      guifg = { attribute = 'fg', highlight = 'DiffAdd' },
+      background = { attribute = 'fg', highlight = 'DiffAdd' },
     },
     modified_selected = {
-      guifg = { attribute = 'fg', highlight = 'DiffAdd' },
+      background = { attribute = 'fg', highlight = 'DiffAdd' },
     },
   },
 }

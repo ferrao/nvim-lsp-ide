@@ -12,11 +12,10 @@ nkeymap('<c-k>', '<c-w>k');
 nkeymap('<c-l>', '<c-w>l');
 --
 -- window resize
-nkeymap('<m-lt>', ':exe "vertical resize " . (winwidth(0) * 4/3)<CR>');
-nkeymap('<m->>', ':exe "vertical resize " . (winwidth(0) * 3/4)<CR>');
-nkeymap('<m-+>', ':exe "resize " . (winheight(0) * 4/3)<CR>');
-nkeymap('<m-->', ':exe "resize " . (winheight(0) * 3/4)<CR>');
-nkeymap('<m-_>', ':exe "resize " . (winheight(0) * 3/4)<CR>');
+nkeymap('<c-,>', ':exe "vertical resize " . (winwidth(0) * 4/3)<CR>');
+nkeymap('<c-.>', ':exe "vertical resize " . (winwidth(0) * 3/4)<CR>');
+nkeymap('<c-=>', ':exe "resize " . (winheight(0) * 4/3)<CR>');
+nkeymap('<c-->', ':exe "resize " . (winheight(0) * 3/4)<CR>');
 
 -- increase/decrease indentation
 vnkeymap('<', '<gv');

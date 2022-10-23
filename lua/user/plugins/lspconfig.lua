@@ -11,7 +11,7 @@ local on_attach = function(client, bufnr)
 
   vim.cmd('command! LspDecl lua vim.lsp.buf.declaration()')
   vim.cmd('command! LspDef lua vim.lsp.buf.definition()')
-  vim.cmd('command! LspFormatting lua vim.lsp.buf.formatting()')
+  vim.cmd('command! LspFormatting lua vim.lsp.buf.format({ async = true })')
   vim.cmd('command! LspCodeAction lua vim.lsp.buf.code_action()')
   vim.cmd('command! LspHover lua vim.lsp.buf.hover()')
   vim.cmd('command! LspRename lua vim.lsp.buf.rename()')
@@ -56,7 +56,7 @@ local on_attach = function(client, bufnr)
   -- format on save
   -- tsserver uses eslint lsp for formatting
   if client.name == 'eslint' then
-    nbkeymap(bufnr, '<leader>f', ':EslintFixAll<CR>')
+    nbkeymap(bufnr, '<leader>p', ':EslintFixAll<CR>')
 
     vim.api.nvim_create_autocmd('BufWritePre', {
       pattern = '*',
@@ -64,9 +64,9 @@ local on_attach = function(client, bufnr)
         vim.cmd(':EslintFixAll')
       end
     })
-  elseif client.resolved_capabilities.document_formatting and client.name ~= 'tsserver' then
+  elseif client.server_capabilities.documentFormattingProvider then
     vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
-    nbkeymap(bufnr, '<leader>f', ':LspFormatting<CR>')
+    nbkeymap(bufnr, '<leader>p', ':LspFormatting<CR>')
   end
 end
 
@@ -96,6 +96,16 @@ lspconfig.tsserver.setup {
     preferences = {
       -- is it possible to disable a specific suggestion only?
       disableSuggestions = true
+    }
+  }
+}
+
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
     }
   }
 }
