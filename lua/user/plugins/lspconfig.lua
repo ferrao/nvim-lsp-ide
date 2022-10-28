@@ -5,6 +5,9 @@ local allServers = require 'lib.servers'
 local tablecopy = require 'lib.utils'.tablecopy
 local tableremove = require 'lib.utils'.tableremove
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -42,8 +45,8 @@ local on_attach = function(client, bufnr)
   nbkeymap(bufnr, 'gi', 'LspImplementation<CR>')
   nbkeymap(bufnr, 'gm', ':LspRename<CR>')
   nbkeymap(bufnr, 'gy', ':LspTypeDef<CR>')
-  nbkeymap(bufnr, '<C-k>', ':LspHover<CR>')
-  ibkeymap(bufnr, '<C-s>', '<cmd> LspSignatureHelp<CR>')
+  nbkeymap(bufnr, '<leader>d', ':LspHover<CR>')
+  ibkeymap(bufnr, '<leader>s', ':LspSignatureHelp<CR>')
   nbkeymap(bufnr, 'ga', ':LspCodeAction<CR>')
 
   -- workspace ?????
@@ -76,6 +79,7 @@ end
 -- some language servers have specific configuration needs
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
@@ -92,6 +96,7 @@ lspconfig.sumneko_lua.setup {
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   init_options = {
     preferences = {
       -- is it possible to disable a specific suggestion only?
@@ -102,6 +107,7 @@ lspconfig.tsserver.setup {
 
 lspconfig.jsonls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
@@ -110,15 +116,30 @@ lspconfig.jsonls.setup {
   }
 }
 
+lspconfig.elixirls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  elixirLS = {
+    dialyzerEnabled = false,
+    fetchDeps = false,
+  };
+}
+
 
 -- Remove from servers the ones we have explecitely configured
 local servers = tablecopy(allServers)
 tableremove(servers, 'sumneko_lua') -- configured above
 tableremove(servers, 'tsserver') -- configured above
+tableremove(servers, 'jsonls') -- configured above
+tableremove(servers, 'elixirls') -- configured above
 
 -- Use a loop to conveniently call 'setup' on all the remaining servers
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
+    capabilities = capabilities
   }
 end

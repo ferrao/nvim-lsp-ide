@@ -45,7 +45,7 @@ packer.startup(function(use)
 
     -- Elixir
     use {
-       'mhinz/vim-mix-format'
+        'mhinz/vim-mix-format'
     }
 
     use {
@@ -80,6 +80,9 @@ packer.startup(function(use)
 
     use {
         'L3MON4D3/LuaSnip',
+        requires = {
+            'saadparwaiz1/cmp_luasnip'
+        },
         config = function()
             require('user.plugins.luasnip')
         end
