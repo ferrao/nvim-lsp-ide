@@ -49,6 +49,21 @@ packer.startup(function(use)
     }
 
     use {
+        "nvim-neotest/neotest",
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
+            'antoinemadec/FixCursorHold.nvim',
+            'jfpedroza/neotest-elixir',
+        },
+        config = function()
+            require('user.plugins.neotest')
+        end
+    }
+
+    -- TreeSitter
+
+    use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         requires = {
