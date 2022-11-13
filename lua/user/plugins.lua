@@ -103,6 +103,8 @@ packer.startup(function(use)
         end
     }
 
+    -- Theme
+
     use {
         'shaunsingh/nord.nvim',
         config = function()
@@ -110,7 +112,14 @@ packer.startup(function(use)
         end
     }
 
-    -- use "EdenEast/nightfox.nvim"
+    use 'EdenEast/nightfox.nvim'
+
+    use {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require 'colorizer'.setup()
+        end
+    }
 
     use {
         'nvim-lualine/lualine.nvim',
