@@ -110,6 +110,8 @@ packer.startup(function(use)
         end
     }
 
+    -- use "EdenEast/nightfox.nvim"
+
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
