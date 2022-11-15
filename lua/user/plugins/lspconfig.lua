@@ -7,6 +7,7 @@ local tableremove = require 'lib.utils'.tableremove
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -129,6 +130,20 @@ lspconfig.elixirls.setup {
   };
 }
 
+lspconfig.emmet_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex', 'eex' },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ["bem.enabled"] = true,
+      },
+    },
+  }
+})
+
 
 -- Remove from servers the ones we have explecitely configured
 local servers = tablecopy(allServers)
@@ -136,6 +151,7 @@ tableremove(servers, 'sumneko_lua') -- configured above
 tableremove(servers, 'tsserver') -- configured above
 tableremove(servers, 'jsonls') -- configured above
 tableremove(servers, 'elixirls') -- configured above
+tableremove(servers, 'emmet_ls') -- configured above
 
 -- Use a loop to conveniently call 'setup' on all the remaining servers
 for _, lsp in pairs(servers) do

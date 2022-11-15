@@ -1,7 +1,6 @@
 local cmp = require 'cmp'
 local lspconfig = require 'lspconfig'
 local luasnip = require("luasnip")
-local servers = require 'lib.servers'
 local has_words_before = require 'lib.utils'.has_words_before
 
 cmp.setup({
@@ -81,12 +80,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-for _, lsp in pairs(servers) do
-  lspconfig[lsp].setup {
-    capabilities = capabilities
-  }
-end

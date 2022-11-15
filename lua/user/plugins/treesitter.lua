@@ -5,7 +5,7 @@ local parsers = {
     'make'; 'c'; 'cpp';
     'http'; 'html'; 'css';
     'javascript'; 'tsx'; 'typescript'; 'jsdoc'; 'json'; 'json5'; 'prisma'; 'graphql';
-    'elixir'; 'erlang';
+    'elixir'; 'erlang'; 'heex'; 'eex';
     'java'; 'lua'; 'php';
 };
 
