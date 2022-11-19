@@ -121,6 +121,7 @@ lspconfig.jsonls.setup {
 lspconfig.elixirls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = { "elixir", "eelixir", "heex", "surface" },
   flags = {
     debounce_text_changes = 150,
   },
@@ -133,7 +134,7 @@ lspconfig.elixirls.setup {
 lspconfig.emmet_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex', 'eex' },
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex' },
   init_options = {
     html = {
       options = {
