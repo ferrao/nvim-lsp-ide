@@ -43,13 +43,17 @@ packer.startup(function(use)
         end
     }
 
-    -- Elixir
+    -- Formatter
+    use { 'mhinz/vim-mix-format' }
     use {
-        'mhinz/vim-mix-format'
+        'mhartington/formatter.nvim',
+        config = function()
+            require('formatter').setup()
+        end
     }
 
     use {
-        "nvim-neotest/neotest",
+        'nvim-neotest/neotest',
         requires = {
             'nvim-lua/plenary.nvim',
             'nvim-treesitter/nvim-treesitter',

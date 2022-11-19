@@ -26,7 +26,7 @@ telescope.setup {
         ['<C-Up>'] = actions.cycle_history_prev,
       },
     },
-    file_ignore_patterns = { '.git/', 'node_modules/', '%.lock' },
+    file_ignore_patterns = { '.git/', 'node_modules/', '%.lock', '_build', 'deps', '.elixir_ls' },
   },
   pickers = {
     find_files = {

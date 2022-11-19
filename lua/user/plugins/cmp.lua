@@ -1,5 +1,4 @@
 local cmp = require 'cmp'
-local lspconfig = require 'lspconfig'
 local luasnip = require("luasnip")
 local has_words_before = require 'lib.utils'.has_words_before
 

@@ -23,3 +23,7 @@ vnkeymap('>', '>gv');
 
 -- toggle spell checking
 nkeymap('<F10>', ':set spell!<CR>');
+
+-- manual formatters
+nkeymap('<c-f>p', ':execute("%!prettier --stdin-filepath %")<CR>')
+nkeymap('<c-f>h', ':execute("!htmlbeautifier -t 4 %")<CR>')

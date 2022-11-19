@@ -1,3 +1,17 @@
-local servers = { 'sumneko_lua', 'tsserver', 'eslint', 'jsonls', 'dockerls', 'elixirls', 'bashls', 'erlangls', 'html' }
+local servers = {
+  'sumneko_lua',
+  'html',
+  'cssls',
+  'emmet_ls',
+  'tsserver',
+  'eslint',
+  'jsonls',
+  'elixirls',
+  'erlangls',
+  'awk_ls',
+  'bashls',
+  'dockerls',
+  'yamlls'
+}
 
 return servers
