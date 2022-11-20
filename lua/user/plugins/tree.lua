@@ -164,6 +164,3 @@ vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_highlight_opened_files = 1
 vim.g.nvim_tree_group_empty = 1
-
-vim.cmd [[highlight NvimTreeIndentMarker guifg=#88C0D0]]
-vim.cmd [[highlight NvimTreeEmptyFolderName guifg=#616E88]]

@@ -39,3 +39,7 @@ vim.cmd [[highlight @tag.attribute guifg=#B48EAD]]
 
 -- Fix elixir syntax
 vim.cmd [[highlight @function gui=italic guifg=#81A1C1]]
+
+-- Fix nerd tree syntax
+vim.cmd [[highlight NvimTreeIndentMarker guifg=#88C0D0]]
+vim.cmd [[highlight NvimTreeEmptyFolderName guifg=#616E88]]
