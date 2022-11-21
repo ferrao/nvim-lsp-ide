@@ -35,7 +35,7 @@ local list = {
   { key = "-", action = "dir_up" },
   { key = "O", action = "system_open" },
   { key = "q", action = "close" },
-  { key = "g?", action = "toggle_help" },
+  { key = "?", action = "toggle_help" },
   { key = "W", action = "collapse_all" },
   { key = "S", action = "search_node" },
   { key = "<C-k>", action = "toggle_file_info" },

@@ -38,7 +38,8 @@ vim.cmd [[highlight @tag.delimiter gui=bold guifg=#616E88]]
 vim.cmd [[highlight @tag.attribute guifg=#B48EAD]]
 
 -- Fix elixir syntax
-vim.cmd [[highlight @function gui=italic guifg=#81A1C1]]
+vim.cmd [[highlight @function.call guifg=#5E81AC]]
+vim.cmd [[highlight @keyword guifg=#B48EAD]]
 
 -- Fix nerd tree syntax
 vim.cmd [[highlight NvimTreeIndentMarker guifg=#88C0D0]]

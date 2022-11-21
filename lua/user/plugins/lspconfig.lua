@@ -126,7 +126,7 @@ lspconfig.elixirls.setup {
     debounce_text_changes = 150,
   },
   elixirLS = {
-    dialyzerEnabled = false,
+    dialyzerEnabled = true,
     fetchDeps = false,
   };
 }
@@ -134,7 +134,7 @@ lspconfig.elixirls.setup {
 lspconfig.emmet_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex' },
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex', 'html-eex', 'elixir' },
   init_options = {
     html = {
       options = {
