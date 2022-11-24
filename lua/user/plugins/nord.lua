@@ -37,10 +37,13 @@ vim.cmd [[highlight @tag gui=bold guifg=#81A1C1]]
 vim.cmd [[highlight @tag.delimiter gui=bold guifg=#616E88]]
 vim.cmd [[highlight @tag.attribute guifg=#B48EAD]]
 
--- Fix elixir syntax
+-- -- Fix elixir syntax
 vim.cmd [[highlight @function.call guifg=#5E81AC]]
-vim.cmd [[highlight @keyword guifg=#B48EAD]]
-
--- Fix nerd tree syntax
+vim.cmd [[highlight @keyword gui=NONE guifg=#B48EAD]]
+vim.cmd [[highlight @string gui=NONE]]
+vim.cmd [[highlight @string.special gui=italic guifg=#A3BE8C]]
+--
+--
+-- -- Fix nerd tree syntax
 vim.cmd [[highlight NvimTreeIndentMarker guifg=#88C0D0]]
 vim.cmd [[highlight NvimTreeEmptyFolderName guifg=#616E88]]

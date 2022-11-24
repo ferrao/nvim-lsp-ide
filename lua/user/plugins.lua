@@ -45,12 +45,6 @@ packer.startup(function(use)
 
     -- Formatter
     use { 'mhinz/vim-mix-format' }
-    use {
-        'mhartington/formatter.nvim',
-        config = function()
-            require('formatter').setup()
-        end
-    }
 
     use {
         'nvim-neotest/neotest',
