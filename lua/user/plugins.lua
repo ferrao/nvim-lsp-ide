@@ -121,7 +121,7 @@ packer.startup(function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         config = function()
             require('user.plugins.lualine')
         end
@@ -129,15 +129,23 @@ packer.startup(function(use)
 
     use {
         'akinsho/bufferline.nvim', tag = "v3.*",
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = 'nvim-tree/nvim-web-devicons',
         config = function()
             require('user.plugins.bufferline')
         end
     }
 
+    use { 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('user.plugins.devicons')
+        end
+    }
+
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+        },
         config = function()
             require('user.plugins.tree')
         end
@@ -147,7 +155,7 @@ packer.startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = {
             { 'nvim-lua/plenary.nvim' },
-            { 'kyazdani42/nvim-web-devicons' },
+            { 'nvim-tree/nvim-web-devicons' },
             { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             { 'gbrlsnchs/telescope-lsp-handlers' },
             { 'nvim-telescope/telescope-media-files.nvim' }

@@ -134,7 +134,7 @@ lspconfig.elixirls.setup {
 lspconfig.emmet_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex', 'html-eex', 'elixir' },
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex', 'html-eex' },
   init_options = {
     html = {
       options = {
