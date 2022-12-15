@@ -43,8 +43,3 @@ vim.cmd [[highlight @symbol gui=NONE guifg=#B48EAD]]
 vim.cmd [[highlight @keyword gui=NONE guifg=#88C0D0]]
 vim.cmd [[highlight @string gui=NONE]]
 vim.cmd [[highlight @string.special gui=italic guifg=#A3BE8C]]
--- vim.cmd [[highlight @keyword gui=NONE guifg=#BF616A]]
---
--- -- Fix nerd tree syntax
-vim.cmd [[highlight NvimTreeIndentMarker guifg=#88C0D0]]
-vim.cmd [[highlight NvimTreeEmptyFolderName guifg=#616E88]]

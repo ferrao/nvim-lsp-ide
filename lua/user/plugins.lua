@@ -157,8 +157,7 @@ packer.startup(function(use)
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-tree/nvim-web-devicons' },
             { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-            { 'gbrlsnchs/telescope-lsp-handlers' },
-            { 'nvim-telescope/telescope-media-files.nvim' }
+            { 'gbrlsnchs/telescope-lsp-handlers' }
 
         },
         config = function()

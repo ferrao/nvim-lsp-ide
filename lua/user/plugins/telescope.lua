@@ -2,13 +2,17 @@ local nkeymap = require('lib.utils').nkeymap
 local telescope = require 'telescope'
 local actions = require 'telescope.actions'
 
+telescope.load_extension('fzf')
+telescope.load_extension('lsp_handlers')
+
 nkeymap('<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<CR>]])
-nkeymap('<leader>fo', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
+nkeymap('<leader>fp', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
 nkeymap('<leader>fg', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]])
 nkeymap('<leader>fb', [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
 nkeymap('<leader>fh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]])
+nkeymap('<leader>fq', [[<cmd>lua require('telescope.builtin').quickfix()<CR>]])
+nkeymap('<leader>fq', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]])
 nkeymap('<leader>fr', [[<cmd>lua require('telescope.builtin').lsp_references()<CR>]])
-nkeymap('<leader>fm', [[<cmd>lua require('telescope.builtin').media_files()<CR>]])
 
 telescope.setup {
   defaults = {
@@ -72,14 +76,6 @@ telescope.setup {
         no_results_message = 'No code actions available',
         prefix = '',
       },
-    },
-    media_files = {
-      filetypes = { 'png', 'webp', 'jpg', 'jpeg', 'pdf' },
-      find_cmd = 'fd'
     }
   },
 }
-
-telescope.load_extension('fzf')
-telescope.load_extension('lsp_handlers')
-telescope.load_extension('media_files')

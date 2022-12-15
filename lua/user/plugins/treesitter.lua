@@ -12,7 +12,7 @@ local parsers = {
 configs.setup {
     -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = parsers,
-
+    auto_install = true,
     sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
