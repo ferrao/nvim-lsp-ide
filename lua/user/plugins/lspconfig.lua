@@ -19,7 +19,6 @@ local on_attach = function(client, bufnr)
   vim.cmd('command! LspCodeAction lua vim.lsp.buf.code_action()')
   vim.cmd('command! LspHover lua vim.lsp.buf.hover()')
   vim.cmd('command! LspRename lua vim.lsp.buf.rename()')
-  vim.cmd('command! LspRefs lua vim.lsp.buf.references()')
   vim.cmd('command! LspTypeDef lua vim.lsp.buf.type_definition()')
   vim.cmd('command! LspImplementation lua vim.lsp.buf.implementation()')
   vim.cmd('command! LspDiagPrev lua vim.diagnostic.goto_prev()')
@@ -29,9 +28,6 @@ local on_attach = function(client, bufnr)
   vim.cmd('command! LspSignatureHelp lua vim.lsp.buf.signature_help()')
 
   -- Mappings.
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   nbkeymap(bufnr, '<leader>e', ':LspDiagLine<CR>')
   nbkeymap(bufnr, '[d', ':LspDiagPrev<CR>')
@@ -43,12 +39,12 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   nbkeymap(bufnr, 'gD', ':LspDecl<CR>')
   nbkeymap(bufnr, 'gd', ':LspDef<CR>')
+  nbkeymap(bufnr, 'gt', ':LspTypeDef<CR>')
   nbkeymap(bufnr, 'gi', 'LspImplementation<CR>')
-  nbkeymap(bufnr, 'gm', ':LspRename<CR>')
-  nbkeymap(bufnr, 'gy', ':LspTypeDef<CR>')
   nbkeymap(bufnr, '<leader>d', ':LspHover<CR>')
-  ibkeymap(bufnr, '<leader>s', ':LspSignatureHelp<CR>')
-  nbkeymap(bufnr, 'ga', ':LspCodeAction<CR>')
+  ibkeymap(bufnr, '<leader>h', ':LspSignatureHelp<CR>')
+  nbkeymap(bufnr, '<leader>rn', ':LspRename<CR>')
+  nbkeymap(bufnr, '<leader>ca', ':LspCodeAction<CR>')
 
   -- workspace ?????
   nbkeymap(bufnr, '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')

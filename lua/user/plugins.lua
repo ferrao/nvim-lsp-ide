@@ -84,7 +84,6 @@ packer.startup(function(use)
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-cmdline',
-            'hrsh7th/nvim-cmp'
         },
         config = function()
             require('user.plugins.cmp')
@@ -94,7 +93,8 @@ packer.startup(function(use)
     use {
         'L3MON4D3/LuaSnip',
         requires = {
-            'saadparwaiz1/cmp_luasnip'
+            'saadparwaiz1/cmp_luasnip',
+            'rafamadriz/friendly-snippets'
         },
         config = function()
             require('user.plugins.luasnip')

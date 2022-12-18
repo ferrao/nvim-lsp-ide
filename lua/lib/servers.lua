@@ -11,7 +11,8 @@ local servers = {
   'awk_ls',
   'bashls',
   'dockerls',
-  'yamlls'
+  'yamlls',
+  'tailwindcss'
 }
 
 return servers

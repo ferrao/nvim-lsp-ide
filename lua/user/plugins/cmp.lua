@@ -2,6 +2,8 @@ local cmp = require 'cmp'
 local luasnip = require("luasnip")
 local has_words_before = require 'lib.utils'.has_words_before
 
+
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -50,6 +52,8 @@ cmp.setup({
     { name = 'buffer' },
   }, {
     { name = 'path' },
+
+    { name = 'luasnip' },
   })
 })
 
