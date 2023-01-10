@@ -41,7 +41,7 @@ configs.setup {
             node_decremental = "grm",
         }
     },
-    textobjects = { enable = true }
+    textobjects = { enable = true, lookahead = true }
 }
 
 vim.opt.foldmethod = 'expr'

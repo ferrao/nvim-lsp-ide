@@ -26,7 +26,6 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
-vim.o.clipboard = 'unnamed' -- Use Linux system clipboard
 vim.o.confirm = true
 vim.o.backup = true
 vim.o.backupdir = vim.fn.stdpath 'data' .. '/backup//'
@@ -40,6 +39,8 @@ vim.o.cursorline = true
 vim.o.cursorcolumn = true
 vim.o.ruler = true
 vim.o.backspace = 'indent,eol,start'
+vim.o.breakindent = true
+vim.o.completeopt = 'menuone,noselect'
 
 -- set var in window
 vim.wo.colorcolumn = '80'
@@ -47,3 +48,14 @@ vim.wo.colorcolumn = '80'
 -- set var in buffer
 vim.bo.textwidth = 100
 vim.bo.formatoptions = 'qrn1'
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+})

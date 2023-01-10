@@ -15,12 +15,20 @@ packer.startup(function(use)
     use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
     use { 'kkoomen/vim-doge' } -- code documentation plugin, run :call doge#install() to install
     use { 'ellisonleao/glow.nvim', branch = 'main' } -- markdown viewer
+    use { 'chrisbra/unicode.vim' }
 
-
+    -- UI
     use {
         'folke/which-key.nvim',
         config = function()
             require("which-key").setup()
+        end
+    }
+
+    use {
+        'stevearc/dressing.nvim',
+        config = function()
+            require('dressing').setup()
         end
     }
 
@@ -34,12 +42,14 @@ packer.startup(function(use)
             'folke/trouble.nvim',
             'williamboman/mason-lspconfig.nvim',
             'neovim/nvim-lspconfig',
+            'j-hui/fidget.nvim',
         },
         config = function()
             require('mason').setup()
             require('mason-lspconfig').setup()
             require('user.plugins.lspconfig')
             require('user.plugins.trouble')
+            require('fidget').setup {}
         end
     }
 
@@ -172,6 +182,7 @@ packer.startup(function(use)
         end
     }
 
+    -- Git
     use {
         'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',
@@ -179,13 +190,9 @@ packer.startup(function(use)
             require('user.plugins.gitsigns')
         end,
     }
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
 
-    use {
-        'j-hui/fidget.nvim',
-        config = function()
-            require('fidget').setup {}
-        end,
-    }
 
     use {
         'glepnir/dashboard-nvim',
@@ -206,6 +213,16 @@ packer.startup(function(use)
         requires = 'nvim-lua/plenary.nvim',
         config = function()
             require('user.plugins.todo-comments')
+        end
+    }
+
+    -- Tasks
+    use {
+        'phaazon/mind.nvim',
+        branch = 'v2.2',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('user.plugins.mind')
         end
     }
 
