@@ -16,6 +16,7 @@ mind.setup({
 
   keymaps = {
     normal = {
+      ["<leader>ms"] = "open_data_index",
       T = function(args)
         require 'mind.ui'.with_cursor(function(line)
           local tree = args.get_tree()

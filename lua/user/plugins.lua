@@ -196,9 +196,11 @@ packer.startup(function(use)
 
     use {
         'glepnir/dashboard-nvim',
+        event = 'VimEnter',
         config = function()
             require('user.plugins.dashboard')
-        end
+        end,
+        requires = { 'nvim-tree/nvim-web-devicons' }
     }
 
     use {
