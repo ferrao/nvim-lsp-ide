@@ -12,7 +12,6 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-
   vim.cmd('command! LspDecl lua vim.lsp.buf.declaration()')
   vim.cmd('command! LspDef lua vim.lsp.buf.definition()')
   vim.cmd('command! LspFormatting lua vim.lsp.buf.format({ async = true })')
@@ -75,7 +74,7 @@ end
 -- when the language server attaches
 
 -- some language servers have specific configuration needs
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -125,7 +124,7 @@ lspconfig.elixirls.setup {
   elixirLS = {
     dialyzerEnabled = true,
     fetchDeps = false,
-  };
+  },
 }
 
 lspconfig.emmet_ls.setup({
@@ -145,7 +144,7 @@ lspconfig.emmet_ls.setup({
 
 -- Remove from servers the ones we have explecitely configured
 local servers = tablecopy(allServers)
-tableremove(servers, 'sumneko_lua') -- configured above
+tableremove(servers, 'lua_ls') -- configured above
 tableremove(servers, 'tsserver') -- configured above
 tableremove(servers, 'jsonls') -- configured above
 tableremove(servers, 'elixirls') -- configured above

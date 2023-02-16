@@ -22,6 +22,7 @@ vim.o.wrap = true
 vim.o.list = true
 vim.o.listchars = 'tab:▸ ,trail:·'
 vim.o.mouse = 'a'
+vim.o.clipboard = 'unnamed'
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.scrolloff = 8
