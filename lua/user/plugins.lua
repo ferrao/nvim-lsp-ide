@@ -3,17 +3,16 @@ local packer = require 'lib.packer'
 -- Install your plugins here
 
 packer.startup(function(use)
-
-    use { 'wbthomason/packer.nvim' } -- Have packer manage itself
-    use { 'airblade/vim-rooter' } -- Changes the working directory to the project root on file open
-    use { 'farmergreg/vim-lastplace' } -- Reopen files at last edit position
-    use { 'tpope/vim-repeat' } -- Repeat plugin maps with '.'
-    use { 'tpope/vim-surround' } -- Word surroundings
-    use { 'tomtom/tcomment_vim' } -- Comment stuff out
-    use { 'tpope/vim-sleuth' } -- Indent autodetection with editorconfig support
-    use { 'nvim-lua/plenary.nvim' } -- Useful lua functions used by lots of plugins
-    use { 'nvim-lua/popup.nvim' } -- An implementation of the Popup API from vim in Neovim
-    use { 'kkoomen/vim-doge' } -- code documentation plugin, run :call doge#install() to install
+    use { 'wbthomason/packer.nvim' }                 -- Have packer manage itself
+    use { 'airblade/vim-rooter' }                    -- Changes the working directory to the project root on file open
+    use { 'farmergreg/vim-lastplace' }               -- Reopen files at last edit position
+    use { 'tpope/vim-repeat' }                       -- Repeat plugin maps with '.'
+    use { 'tpope/vim-surround' }                     -- Word surroundings
+    use { 'tomtom/tcomment_vim' }                    -- Comment stuff out
+    use { 'tpope/vim-sleuth' }                       -- Indent autodetection with editorconfig support
+    use { 'nvim-lua/plenary.nvim' }                  -- Useful lua functions used by lots of plugins
+    use { 'nvim-lua/popup.nvim' }                    -- An implementation of the Popup API from vim in Neovim
+    use { 'kkoomen/vim-doge' }                       -- code documentation plugin, run :call doge#install() to install
     use { 'ellisonleao/glow.nvim', branch = 'main' } -- markdown viewer
     use { 'chrisbra/unicode.vim' }
 
@@ -36,15 +35,21 @@ packer.startup(function(use)
     use {
         'williamboman/mason.nvim',
         requires = {
+            'williamboman/mason-lspconfig.nvim',
+            'neovim/nvim-lspconfig',
             'b0o/schemastore.nvim',
             'folke/lsp-colors.nvim',
             'weilbith/nvim-code-action-menu',
             'folke/trouble.nvim',
-            'williamboman/mason-lspconfig.nvim',
-            'neovim/nvim-lspconfig',
             'j-hui/fidget.nvim',
         },
         config = function()
+            -- pin nvim to OS node version, regardless of the project
+            local node_bin = '/usr/bin/'
+            vim.g.node_host_prog = node_bin
+            vim.env.PATH = node_bin .. ":" .. vim.env.PATH
+
+
             require('mason').setup()
             require('mason-lspconfig').setup()
             require('user.plugins.lspconfig')
@@ -228,4 +233,10 @@ packer.startup(function(use)
         end
     }
 
+    use {
+        'vimwiki/vimwiki',
+        config = function()
+            require('user.plugins.vimwiki')
+        end
+    }
 end)
