@@ -8,6 +8,7 @@ local tableremove = require 'lib.utils'.tableremove
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
+--
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -58,15 +59,17 @@ local on_attach = function(client, bufnr)
   if client.name == 'eslint' then
     nbkeymap(bufnr, '<leader>p', ':EslintFixAll<CR>')
 
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      pattern = '*',
-      callback = function()
-        vim.cmd(':EslintFixAll')
-      end
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
     })
   elseif client.server_capabilities.documentFormattingProvider then
     vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = false })')
     nbkeymap(bufnr, '<leader>p', ':LspFormatting<CR>')
+  end
+
+  if client.name == "tsserver" then
+    client.server_capabilities.documentFormattingProvider = false     -- 0.8 and later
   end
 end
 
@@ -144,9 +147,9 @@ lspconfig.emmet_ls.setup({
 
 -- Remove from servers the ones we have explecitely configured
 local servers = tablecopy(allServers)
-tableremove(servers, 'lua_ls') -- configured above
+tableremove(servers, 'lua_ls')   -- configured above
 tableremove(servers, 'tsserver') -- configured above
-tableremove(servers, 'jsonls') -- configured above
+tableremove(servers, 'jsonls')   -- configured above
 tableremove(servers, 'elixirls') -- configured above
 tableremove(servers, 'emmet_ls') -- configured above
 
