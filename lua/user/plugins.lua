@@ -31,6 +31,8 @@ packer.startup(function(use)
         end
     }
 
+    use { 'j-hui/fidget.nvim', tag = 'legacy' }
+
     -- LSP
     use {
         'williamboman/mason.nvim',

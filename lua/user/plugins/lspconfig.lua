@@ -69,7 +69,7 @@ local on_attach = function(client, bufnr)
   end
 
   if client.name == "tsserver" then
-    client.server_capabilities.documentFormattingProvider = false     -- 0.8 and later
+    client.server_capabilities.documentFormattingProvider = true -- 0.8 and later
   end
 end
 
